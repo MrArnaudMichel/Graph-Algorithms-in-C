@@ -8,18 +8,16 @@
 #include <time.h>
 
 
-int main()
-{
+int main() {
     srand(time(NULL));
 
     graphe g;
     init_graphe(&g);
     generer_aleatoire(&g, 10, 5);
-    ajouter_arete(&g, (arete){0, 1});
-    double *valeurs = malloc(nb_aretes(&g) * sizeof(double ));
+    ajouter_arete(&g, (arete) {0, 1});
+    double *valeurs = malloc(nb_aretes(&g) * sizeof(double));
 
     init_aleatoire(valeurs, nb_aretes(&g), 10.0);
-
 
 
     printf("AFFICHER GRAPHE\n");
@@ -29,7 +27,7 @@ int main()
     arete *arretetriee = malloc(nb_aretes(&g) * sizeof(arete));
     memcpy(arretetriee, g.aretes, nb_aretes(&g) * sizeof(arete));
     trier_aretes(arretetriee, &g, valeurs);
-    for (size_t i = 0; i < nb_aretes(&g); i++){
+    for (size_t i = 0; i < nb_aretes(&g); i++) {
         printf("%zu %zu: %f\n", arretetriee[i].s1, arretetriee[i].s2, valeurs[index_arete(&g, arretetriee[i])]);
     }
     graphe g2;
